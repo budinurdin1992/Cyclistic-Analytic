@@ -10,4 +10,14 @@
 
 1.  Give Suggestions Stategy to Convert Casual User to Membership User
 
-    Description   : Give suggestions strategy to convert Casual Users to Membership Users base on data as guiden.
+    Description : Give data driven suggestions strategy to convert Casual Users to Membership Users base on data as guiden.
+    
+2.  Data Source : 
+
+3.  Data Preprocessing and Cleaning :
+    - Clean data that have Nan Value and Duplicated Value for column(ride_id).
+    - Fix (ride_id) that has Nan Value or Only Spaces Value for column(start_station_name) if (ride_id) has Value in columns(start_lat, start_lng)
+    - Fix (ride_id) that has Nan Value or Only Spaces Value for column(end_station_name) if (ride_id) has Value in columns(end_lat, end_lng)
+    
+ 4. Analysis Methodologi :
+ 
