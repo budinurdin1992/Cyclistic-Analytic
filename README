@@ -34,7 +34,12 @@
     - R
     - tools
     - readr
-    - 
+    - lubridate
+    - tidyr
+    - tibble
+    - dplyr
+    - stringi
+    - ggplot2
     
 8. Code and Data Avaibility :
 
