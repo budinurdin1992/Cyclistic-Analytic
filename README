@@ -10,7 +10,7 @@
 
 1.  Give Suggestions Stategy to Convert Casual User to Membership User
 
-    Description : Give data driven suggestions strategy to convert Casual Users to Membership Users base on data as guiden.
+    Description : Give data driven suggestions strategy to convert Casual Users(Non Membership Users) to Membership Users.
     
 2.  Data Source : 
 
@@ -20,4 +20,9 @@
     - Fix (ride_id) that has Nan Value or Only Spaces Value for column(end_station_name) if (ride_id) has Value in columns(end_lat, end_lng)
     
  4. Analysis Methodologi :
- 
+    - Determine the highest traffic day for Casual User.
+    - Determine the bussiest start_station_name and end_station_name for Casual User.
+    - Determine the when the bussiest start_station_name and end_station_name for Casual User.
+    
+ 5. Results and Findings :
+    
