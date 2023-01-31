@@ -21,18 +21,21 @@
     - Fix column(ride_id) that has Nan Value or Only Spaces Value for column(start_station_name) if (ride_id) has Value in columns(start_lat, start_lng)
     - Fix column(ride_id) that has Nan Value or Only Spaces Value for column(end_station_name) if (ride_id) has Value in columns(end_lat, end_lng)
     
- 4. Analysis Methodologi :
+4. Analysis Methodologi :
     - Determine the highest traffic day for Casual User.
     - Determine the bussiest start_station_name and end_station_name for Casual User.
     - Determine the when the bussiest start_station_name and end_station_name for Casual User.
     
- 5. Results and Findings :
+5. Results and Findings :
  
- 6. Conclusions and Future Work :
+6. Conclusions and Future Work :
  
- 7. Technologies and Tools :
+7. Technologies and Tools :
     - R
     - tools
     - readr
     - 
     
+8. Code and Data Avaibility :
+
+9. Contributors :
