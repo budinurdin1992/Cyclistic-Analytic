@@ -17,8 +17,9 @@
 3.  Data Preprocessing and Cleaning :
     - Combine Data from multiple dataset
     - Clean data that have Nan Value and Duplicated Value for column(ride_id).
-    - Fix (ride_id) that has Nan Value or Only Spaces Value for column(start_station_name) if (ride_id) has Value in columns(start_lat, start_lng)
-    - Fix (ride_id) that has Nan Value or Only Spaces Value for column(end_station_name) if (ride_id) has Value in columns(end_lat, end_lng)
+    - Fix columns() data type from String to Datetime
+    - Fix column(ride_id) that has Nan Value or Only Spaces Value for column(start_station_name) if (ride_id) has Value in columns(start_lat, start_lng)
+    - Fix column(ride_id) that has Nan Value or Only Spaces Value for column(end_station_name) if (ride_id) has Value in columns(end_lat, end_lng)
     
  4. Analysis Methodologi :
     - Determine the highest traffic day for Casual User.
@@ -31,5 +32,7 @@
  
  7. Technologies and Tools :
     - R
+    - tools
+    - readr
     - 
     
