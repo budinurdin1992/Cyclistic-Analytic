@@ -1,1 +1,12 @@
+1. Project Title and Description: Give a brief overview of the project, its purpose and what the data analysis aims to achieve.
+2. Data Source: Mention the source of the data used in the analysis, along with any relevant details such as date range or geographical coverage.
+3. Data Preprocessing and Cleaning: Explain the steps taken to clean and prepare the data for analysis, including any relevant code snippets.
+4. Analysis Methodology: Describe the techniques used to analyze the data, such as statistical methods, machine learning models, or data visualization tools.
+5. Results and Findings: Present the results of the analysis, including any key insights or patterns discovered. This section should also include any relevant plots or charts to help visualize the results.
+6. Conclusions and Future Work: Summarize the main conclusions of the analysis, and discuss any potential avenues for future research or improvement.
+7. Technologies and Tools: List the programming languages, libraries, and tools used in the project, along with any relevant version numbers.
+8. Code and Data Availability: Specify how the code and data used in the project can be accessed, including any relevant links to GitHub repositories or data sources.
+9. Contributors: Acknowledge any contributors or collaborators who participated in the project, including their roles and responsibilities.
 
+1.  Project Title : Cyclistic Member/Casual Data Analytic
+    Description   : 
