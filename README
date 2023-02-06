@@ -10,7 +10,7 @@
 
 1.  Give Suggestions Stategy (Company: Cyclistic) to Convert Casual User to Membership User
 
-    Description : Give data driven suggestions strategy to convert Casual Users(Non Membership Users) to Membership Users for fictional company Cyclistic.
+    Description : Give data d riven suggestions strategy to convert Casual Users(Non Membership Users) to Membership Users for fictional company Cyclistic.
     
 2.  Data Source : 
 
@@ -29,6 +29,9 @@
     - Determine the when the bussiest start_station_name and end_station_name for Casual User.
     
 5. Results and Findings :
+    - The highest traffic day for Casual User is Saturday, Sunday and Monday. We can advertising every Friday, Saturday, Sunday and Monday to offer interesting join membership 
+      offering.
+    - The bussiest bike station for Casual User is:
  
 6. Conclusions and Future Work :
  
