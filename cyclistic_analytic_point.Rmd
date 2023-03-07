@@ -1,0 +1,93 @@
+---
+title: "cyclistic_analytic_point"
+author: "Budi Nurdin"
+date: "2023-02-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Step 1: Importing Libraries
+```{r cars}
+library(lubridate)
+library(tools)
+library(tidyr)
+library(tibble)
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(stringi)
+library(geosphere)
+library(sp)
+
+```
+## Step 2: Data Preprocessing and Cleaning
+### Step 2.1: Combine Data from multiple dataset
+```{r pressure, echo=FALSE}
+df_function <- function(x){
+  file_path <- paste0("C:/Users/Budi/Desktop/Cyclistic/2022",x,"-divvy-tripdata.csv")
+  df_name <- paste0("tripdata_2022",x)
+  df_name <- read.csv(file = file_path)
+  tib_name <- as_tibble(df_name)
+  return(tib_name)
+}
+
+# "01","02","03","04","05","06","07","08","09","10","11","12"
+tib_list <- lapply(c("01","02"), df_function)
+tib_completed <- do.call(rbind, tib_list)
+```
+### Step 2.2:  Cleaning data that have only spaces charcter for column("start_lat", "start_lng", "end_lat", "end_lng","start_station_name","end_station_name")
+```{r}
+columns_to_filter_spaces <- c("start_lat", "start_lng", "end_lat", "end_lng","start_station_name",
+                              "end_station_name")
+tib_clean <- tib_completed %>% 
+  filter(Reduce(`&`, lapply(tib_completed[, columns_to_filter_spaces], function(col) 
+    nchar(trimws(col)) > 0)))
+```
+### Step 2.3: Group_by base on start_station_name
+```{r}
+tib_start <- tib_clean %>%
+  group_by(start_station_name) %>% 
+  summarise(min_start_lat=min(start_lat), max_start_lat=max(start_lat), min_start_lng=min(start_lng),
+            max_start_lng=max(start_lng))
+```
+### Step 2.4: Group_by base on end_station_name
+```{r}
+tib_end <- tib_clean %>%
+  group_by(end_station_name) %>% 
+  summarise(min_end_lat=min(end_lat), max_end_lat=max(end_lat), min_end_lng=min(end_lng), max_end_lng=max(end_lng))
+```
+### Step 2.5: Combine tib_start and tib_end
+```{r}
+tib_station_point <- full_join(tib_start, tib_end, by=c("start_station_name" = "end_station_name"))
+```
+### Step 2.6: determine center point station
+#### Step 2.6.1: determine the min_lat, max_lat, min_lng, max_lng
+```{r}
+tib_station_point <- tib_station_point %>% 
+  mutate(min_lat = pmin(min_start_lat, min_end_lat),
+         max_lat = pmax(max_start_lat, max_end_lat),
+         min_lng = pmin(min_start_lng, min_end_lng),
+         max_lng = pmax(max_start_lng, min_end_lng))
+```
+#### Step 2.6.2: determine center_lat and center_lng
+```{r}
+tib_station_point <- tib_station_point %>% 
+  mutate(center_lat = (min_lat+max_lat)/2,
+         center_lng = (min_lng+max_lng)/2)
+```
+### Step 2.7: fix only spaces value in start_station_name with NA value
+```{r}
+tib_completed <- tib_completed %>% mutate(start_station_name = ifelse(start_station_name == "" | is.na(start_station_name), NA, start_station_name))
+```
+### Step 2.8: Replace start_station_name with station name base on nearest point
+```{r}
+replace_na <- function(x) {
+  dists <- apply(tib_station_point[, c("center_lat", "center_lng")], 1, function(y) distHaversine(c(x["start_lat"], x["start_lng"]), y))
+  index <- which.min(dists)
+  return(tib_station_point[index, "start_station_name"])
+}
+
+tib_completed$start_station_name[is.na(tib_completed$start_station_name)] <- apply(tib_completed[is.na(tib_completed$start_station_name), c("start_lat", "start_lng")], 1, replace_na)
+```
